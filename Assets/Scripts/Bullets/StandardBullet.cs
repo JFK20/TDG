@@ -29,4 +29,8 @@ public abstract class StandardBullet : MonoBehaviour {
         other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
         Destroy(gameObject);
     }
+
+    private void OnBecameInvisible() {
+        Destroy(this.gameObject);
+    }
 }
