@@ -4,55 +4,40 @@ using UnityEngine;
 
 public class IceTurret : StandardTurret
 {
+    [Header("Attributes")] 
+    [SerializeField] protected float aps= 1f; //attacks per second
+    [SerializeField] protected float slowingAmount = 2f;
+    [SerializeField] protected float slowingTime = 2f;
+    
     protected override void Update() {
-        if (target == null || target.gameObject.GetComponent<EnemyMovement>().isSlowed) {
-            FindTarget();
-            return;
-        }
+        timeUntilFire += Time.deltaTime;
         
-        RotateTowardsTarget();
-        
-        if (!CheckTargetIsInRange()) {
-            target = null;
-        }
-        else {
-            timeUntilFire += Time.deltaTime;
-
-            if (timeUntilFire >= 1f / bps) {
-                Shoot();
-                timeUntilFire = 0;
-            }
+        if (timeUntilFire >= 1f / aps) {
+            FreezeEnemies();
+            timeUntilFire = 0;
         }
     }
 
-    protected override void Shoot() {
-        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-        StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
-        standardBulletScript.SetTarget(target);
-        target.gameObject.GetComponent<EnemyMovement>().isSlowed = true;
-    }
-
-    protected override void FindTarget() {
+    private void FreezeEnemies() {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position,
             0f, enemyMask);
 
         if (hits.Length > 0) {
-            int length = hits.Length;
-            for (int i = 0; i < length; i++) {
-                if (FoundTarget(hits,i)) {
-                    return;
-                }
+            for (int i = 0; i < hits.Length; i++) {
+                RaycastHit2D hit = hits[i];
+
+                EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
+                em.UpdateSpeed(slowingAmount);
+                em.gameObject.GetComponent<SpriteRenderer>().color += Color.blue;
+                StartCoroutine(ResetEnemySpeed(em));
             }
         }
     }
 
-    private bool FoundTarget(RaycastHit2D[] _hits,int position) {
-        Transform tmp = _hits[position].transform;
-        if (!tmp.gameObject.GetComponent<EnemyMovement>().isSlowed) {
-            target = tmp;
-            return true;
-        }
-        return false;
+    private IEnumerator ResetEnemySpeed(EnemyMovement em) {
+        yield return new WaitForSeconds(slowingTime);
+        
+        em.ResetSpeed();
     }
     
 }
