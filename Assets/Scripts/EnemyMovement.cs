@@ -14,10 +14,13 @@ public class EnemyMovement : MonoBehaviour {
 
     private Transform target;
     private int pathIndex = 0;
+    private float baseSpeed;
+
     public bool isSlowed = false;
 
     private void Start() {
         target = LevelManager.Main.path[pathIndex];
+        baseSpeed = moveSpeed;
     }
 
     private void Update() {
@@ -40,17 +43,18 @@ public class EnemyMovement : MonoBehaviour {
 
         rb.velocity = direction * moveSpeed;
     }
-
-    private IEnumerator ChangeSpeedCoroutine(float amount,int duration) {
-        float baseMoveSpeed = moveSpeed;
-        moveSpeed += amount;
-        yield return new WaitForSeconds(duration);
-        moveSpeed = baseMoveSpeed;
-        isSlowed = false;
+    
+    public void UpdateSpeed(float newSpeed) {
+        if (moveSpeed - newSpeed >= 0) {
+            moveSpeed -= newSpeed;
+        }
+        else {
+            Debug.Log("Going back");
+        }
+        
     }
 
-    public void ChangeSpeed(float amount,int duration) {
-        if (moveSpeed + amount < 0) { return; }
-        StartCoroutine(ChangeSpeedCoroutine(amount, duration));
+    public void ResetSpeed() {
+        moveSpeed = baseSpeed;
     }
 }
