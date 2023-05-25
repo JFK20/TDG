@@ -28,6 +28,7 @@ public class IceTurret : StandardTurret
 
                 EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
                 em.UpdateSpeed(slowingAmount);
+                em.gameObject.GetComponent<SpriteRenderer>().color += Color.blue;
                 StartCoroutine(ResetEnemySpeed(em));
             }
         }

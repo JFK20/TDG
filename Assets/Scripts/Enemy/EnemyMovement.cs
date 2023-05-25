@@ -56,5 +56,6 @@ public class EnemyMovement : MonoBehaviour {
 
     public void ResetSpeed() {
         moveSpeed = baseSpeed;
+        this.gameObject.GetComponent<SpriteRenderer>().color -= Color.blue;
     }
 }
