@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 
 public abstract class StandardTurret : MonoBehaviour {
@@ -12,6 +13,8 @@ public abstract class StandardTurret : MonoBehaviour {
     [SerializeField] protected LayerMask enemyMask;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected Transform firingPoint;
+    [SerializeField] protected GameObject upgradeUI;
+    [SerializeField] protected Button upgradeButton;
     
     [Header("Attributes")] 
     [SerializeField] protected float targetingRange = 5f;
@@ -72,5 +75,13 @@ public abstract class StandardTurret : MonoBehaviour {
     protected void OnDrawGizmosSelected() {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+    }
+
+    public void OpenUpgradeUI() {
+        upgradeUI.SetActive(true);
+    }
+    
+    public void CloseUpgradeUI() {
+        upgradeUI.SetActive(false);
     }
 }
