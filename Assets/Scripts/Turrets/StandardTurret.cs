@@ -18,11 +18,24 @@ public abstract class StandardTurret : MonoBehaviour {
     
     [Header("Attributes")] 
     [SerializeField] protected float targetingRange = 5f;
-    [SerializeField] protected float rotationSpeed = 5f;
+    [SerializeField] protected float rotationSpeed = 150f;
     [SerializeField] protected float bps = 1f; //bullets per second
+    [SerializeField] protected int cost = 100;
+    
+    protected float baseTargetingRange = 5f;
+    protected float baseBps = 1f;
 
     protected Transform target;
     protected float timeUntilFire;
+
+    protected int level = 1;
+
+    protected virtual void Start() {
+        /*if (this.GetType() == typeof(IceTurret)) { return;}
+        baseBps = bps;
+        baseTargetingRange = targetingRange;*/
+        throw new InheritanceException();
+    }
 
     protected virtual void Update() {
         if (target == null) {
@@ -49,7 +62,7 @@ public abstract class StandardTurret : MonoBehaviour {
         /*GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);*/
-        Debug.Log("GetFromInheritance");
+        throw new InheritanceException();
     }
     
     protected bool CheckTargetIsInRange() {
@@ -83,5 +96,31 @@ public abstract class StandardTurret : MonoBehaviour {
     
     public void CloseUpgradeUI() {
         upgradeUI.SetActive(false);
+        UIManager.Main.SetHoveringState(false);
+    }
+
+    protected virtual void Upgrade() {
+        /*if (CalculateCost() > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(CalculateCost());
+        level++;
+        bps = CalculateBps();
+        targetingRange = CalculateTargetingRange();*/
+        throw new InheritanceException();
+    }
+
+    protected virtual int CalculateCost() {
+        //return Mathf.RoundToInt(cost * Mathf.Pow(level, 0.8f));
+        throw new InheritanceException();
+    }
+
+    protected virtual float CalculateBps() {
+        //return baseBps * Mathf.Pow(level, 0.5f);
+        throw new InheritanceException();
+    }
+    
+    protected virtual float CalculateTargetingRange() {
+        //return baseTargetingRange * Mathf.Pow(level, 0.3f);
+        throw new InheritanceException();
     }
 }

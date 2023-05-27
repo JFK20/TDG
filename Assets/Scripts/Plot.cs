@@ -27,6 +27,8 @@ public class Plot : MonoBehaviour {
     }
 
     private void OnMouseDown() {
+        if (UIManager.Main.IsHoveringUI()) { return; }
+        
         if (towerObj != null) {
             if (UIManager.Main.IsHoveringUI()) {
                 return;

@@ -5410,6 +5410,7 @@ GameObject:
   - component: {fileID: 860951922}
   - component: {fileID: 860951924}
   - component: {fileID: 860951925}
+  - component: {fileID: 860951926}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -5505,6 +5506,18 @@ MonoBehaviour:
   - name: IceTower
     cost: 100
     turretPrefab: {fileID: 5201223173704965129, guid: d7a6835cf99d14c4fbe2c005c8dd891b, type: 3}
+--- !u!114 &860951926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860951921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f62d6d26c0da044a1960ee0233f096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &864324815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8159221063886452664, guid: 9a1b947233db3ae4ba4b0ec209a8b319, type: 3}
