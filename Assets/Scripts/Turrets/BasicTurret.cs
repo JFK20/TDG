@@ -17,27 +17,29 @@ public class BasicTurret : StandardTurret {
         baseBps = bps;
         baseTargetingRange = targetingRange;
         
-        upgradeButton.onClick.AddListener(Upgrade);
+        upgradeButton1.onClick.AddListener(UpgradeBps);
+        upgradeButton2.onClick.AddListener(UpgradeRange);
     }
     
-    protected override void Upgrade(){
-        if (CalculateCost() > LevelManager.Main.currency) { return; }
+    protected override void UpgradeBps(){
+        if (CalculateCost(levelBps) > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost());
-        level++;
-        bps = CalculateBps();
-        targetingRange = CalculateTargetingRange();
+        LevelManager.Main.SpendCurrency(CalculateCost(levelBps));
+        levelBps++;
+        bps = CalculateBps(levelBps);
+        if (levelBps >= 5) {
+            upgradeButton1.interactable = false;
+        }
     }
     
-    protected override int CalculateCost() {
-        return Mathf.RoundToInt(cost * Mathf.Pow(level, 0.8f));
-    }
+    protected override void UpgradeRange(){
+        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
 
-    protected override float CalculateBps() {
-        return baseBps * Mathf.Pow(level, 0.5f);
-    }
-    
-    protected override float CalculateTargetingRange() {
-        return baseTargetingRange * Mathf.Pow(level, 0.3f);
+        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
+        levelRange++;
+        targetingRange = CalculateTargetingRange(levelRange);
+        if (levelRange >= 3) {
+            upgradeButton2.interactable = false;
+        }
     }
 }

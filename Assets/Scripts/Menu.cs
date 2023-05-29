@@ -20,7 +20,8 @@ public class Menu : MonoBehaviour
 
     private void OnGUI() {
         LevelManager data = LevelManager.Main;
+        String wave = data.gameObject.GetComponent<EnemySpawner>().CurrentWave.ToString();
         currencyUI.text = data.currency.ToString();
-        lifeUI.text =  "lifes:  " + data.lifes.ToString();
+        lifeUI.text =  "lifes:  " + data.lifes.ToString() + "\n" + " wave: " + wave;
     }
 }

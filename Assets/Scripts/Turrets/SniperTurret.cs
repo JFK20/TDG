@@ -8,6 +8,7 @@ public class SniperTurret : StandardTurret
     protected override void Shoot() {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
+        standardBulletScript.Damage = levelDmg;
         standardBulletScript.SetTarget(target);
     }
     
@@ -15,27 +16,29 @@ public class SniperTurret : StandardTurret
         baseBps = bps;
         baseTargetingRange = targetingRange;
         
-        upgradeButton.onClick.AddListener(Upgrade);
+        upgradeButton1.onClick.AddListener(UpgradeDmg);
+        upgradeButton2.onClick.AddListener(UpgradeRange);
     }
     
-    protected override void Upgrade(){
-        if (CalculateCost() > LevelManager.Main.currency) { return; }
+    protected override void UpgradeDmg(){
+        if (CalculateCost(levelDmg) > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost());
-        level++;
-        bps = CalculateBps();
-        targetingRange = CalculateTargetingRange();
-    }
-    
-    protected override int CalculateCost() {
-        return Mathf.RoundToInt(cost * Mathf.Pow(level, 0.8f));
+        LevelManager.Main.SpendCurrency(CalculateCost(levelDmg));
+        levelDmg++;
+        if (levelDmg >= 5) {
+            upgradeButton1.enabled = false;
+        }
     }
 
-    protected override float CalculateBps() {
-        return baseBps * Mathf.Pow(level, 0.5f);
+    protected override void UpgradeRange() {
+        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
+        levelRange++;
+        targetingRange = CalculateTargetingRange(levelRange);
+        if (levelRange >= 4) {
+            upgradeButton2.enabled = false;
+        }
     }
     
-    protected override float CalculateTargetingRange() {
-        return baseTargetingRange * Mathf.Pow(level, 0.2f);
-    }
 }

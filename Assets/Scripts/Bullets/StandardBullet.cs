@@ -11,7 +11,12 @@ public abstract class StandardBullet : MonoBehaviour {
     [Header("Attributes")] 
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private int damage = 1;
-    
+
+    public int Damage {
+        get => damage;
+        set => damage = value;
+    }
+
     private Transform target;
 
     public void SetTarget(Transform _target) {
