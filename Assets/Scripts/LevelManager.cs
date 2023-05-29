@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour {
     public Transform[] path;
 
     public int currency;
+    public int lifes;
+    
 
     private void Awake() {
         Main = this;
@@ -18,6 +20,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start() {
         currency = 200;
+        lifes = 100;
     }
 
     public void IncreaseCurrency(int amount) {
@@ -33,6 +36,15 @@ public class LevelManager : MonoBehaviour {
         else {
             Debug.Log("Pleite");
             return false;
+        }
+    }
+
+    public void DecreaseLife(int amount) {
+        if (amount > lifes) {
+            //game.over
+        }
+        else {
+            lifes -= amount;
         }
     }
 }
