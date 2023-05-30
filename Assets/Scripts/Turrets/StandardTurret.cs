@@ -88,10 +88,10 @@ public abstract class StandardTurret : MonoBehaviour {
         }
     }
 
-    protected void OnDrawGizmosSelected() {
+    /*protected void OnDrawGizmosSelected() {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-    }
+    }*/
 
     public void OpenUpgradeUI() {
         upgradeUI.SetActive(true);

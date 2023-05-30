@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour {
             EnemySpawner.onEnemyKilled.Invoke();
             LevelManager.Main.IncreaseCurrency(currencyWorth);
             isDestroyed = true;
+            SoundEffectPlayer.Main.KillSound();
             Destroy(gameObject);
         }
     }

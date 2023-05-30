@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
     
@@ -29,7 +30,6 @@ public class LevelManager : MonoBehaviour {
 
     public bool SpendCurrency(int amount) {
         if (amount <= currency) {
-            //Buy Tower
             currency -= amount;
             return true;
         }
@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour {
 
     public void DecreaseLife(int amount) {
         if (amount > lifes) {
-            //game.over
+            SceneManager.LoadScene(0);
         }
         else {
             lifes -= amount;

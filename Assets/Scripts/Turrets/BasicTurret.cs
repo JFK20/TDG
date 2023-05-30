@@ -10,6 +10,7 @@ public class BasicTurret : StandardTurret {
     protected override void Shoot() {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
+        SoundEffectPlayer.Main.ShootSound();
         standardBulletScript.SetTarget(target);
     }
 
@@ -27,6 +28,7 @@ public class BasicTurret : StandardTurret {
         LevelManager.Main.SpendCurrency(CalculateCost(levelBps));
         levelBps++;
         bps = CalculateBps(levelBps);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelBps >= 5) {
             upgradeButton1.interactable = false;
         }
@@ -38,6 +40,7 @@ public class BasicTurret : StandardTurret {
         LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
         levelRange++;
         targetingRange = CalculateTargetingRange(levelRange);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= 3) {
             upgradeButton2.interactable = false;
         }

@@ -25,6 +25,7 @@ public class SniperTurret : StandardTurret
 
         LevelManager.Main.SpendCurrency(CalculateCost(levelDmg));
         levelDmg++;
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelDmg >= 5) {
             upgradeButton1.enabled = false;
         }
@@ -36,6 +37,7 @@ public class SniperTurret : StandardTurret
         LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
         levelRange++;
         targetingRange = CalculateTargetingRange(levelRange);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= 4) {
             upgradeButton2.enabled = false;
         }
