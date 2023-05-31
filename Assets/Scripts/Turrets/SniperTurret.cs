@@ -27,7 +27,7 @@ public class SniperTurret : StandardTurret
         levelDmg++;
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelDmg >= 5) {
-            upgradeButton1.enabled = false;
+            upgradeButton1.interactable = false;
         }
     }
 
@@ -39,7 +39,7 @@ public class SniperTurret : StandardTurret
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= 4) {
-            upgradeButton2.enabled = false;
+            upgradeButton2.interactable = false;
         }
     }
     

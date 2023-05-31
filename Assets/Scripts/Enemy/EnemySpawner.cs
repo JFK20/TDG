@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour {
     private void SpawnEnemy() {
         int rand = Random.Range(0, 10);
         GameObject prefabToSpawn;
-        if (rand <= 7.5) {
+        if (rand <= 7) {
             prefabToSpawn = enemyPrefab[0];
         }
         else {
