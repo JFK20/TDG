@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Plot : MonoBehaviour {
     
@@ -9,7 +10,8 @@ public class Plot : MonoBehaviour {
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
     
-    private GameObject tower;
+    public GameObject towerObj;
+    public StandardTurret turret;
     private Color startColor;
 
     private void Start() {
@@ -25,14 +27,24 @@ public class Plot : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        if (tower != null) {
-            return; //Open menu
+        if (UIManager.Main.IsHoveringUI()) { return; }
+        
+        if (towerObj != null) {
+            if (UIManager.Main.IsHoveringUI()) {
+                return;
+            }
+            //Open menu
+
+            turret.OpenUpgradeUI();
+            return;
+            
         }
 
         Tower tmpTower = BuildManager.Main.GetSelectedTower();
 
         if (LevelManager.Main.SpendCurrency(tmpTower.cost)) {
-            tower = Instantiate(tmpTower.turretPrefab, transform.position, Quaternion.identity);
+            towerObj = Instantiate(tmpTower.turretPrefab, transform.position, Quaternion.identity);
+            turret = towerObj.GetComponent<StandardTurret>();
         }
     }
 }

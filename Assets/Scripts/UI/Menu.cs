@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI currencyUI;
+    [SerializeField] private TextMeshProUGUI lifeUI;
     [SerializeField] private Animator anim;
 
     private bool isMenuOpen = true;
@@ -18,11 +19,9 @@ public class Menu : MonoBehaviour
     }
 
     private void OnGUI() {
-        currencyUI.text = LevelManager.Main.currency.ToString();
+        LevelManager data = LevelManager.Main;
+        String wave = data.gameObject.GetComponent<EnemySpawner>().CurrentWave.ToString();
+        currencyUI.text = data.currency.ToString();
+        lifeUI.text =  "lifes:  " + data.lifes.ToString() + "\n" + " wave: " + wave;
     }
-
-    public void SetSelected() {
-        
-    }
-    
 }

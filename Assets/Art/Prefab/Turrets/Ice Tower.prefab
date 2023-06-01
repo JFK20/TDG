@@ -107,5 +107,5 @@ MonoBehaviour:
   rotationSpeed: 150
   bps: 1
   aps: 0.5
-  slowingAmount: 2
+  slowingAmount: 1
   slowingTime: 1
