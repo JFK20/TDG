@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class LevelManager : MonoBehaviour {
 
     public Transform startPoint;
     public Transform[] path;
+
+    [SerializeField] TextMeshProUGUI gameOverText;
 
     public int currency;
     public int lifes;
@@ -41,14 +44,24 @@ public class LevelManager : MonoBehaviour {
 
     public void DecreaseLife(int amount) {
         if (lifes - amount <= 0) {
+            lifes = 0;
             // ends game
             int score = this.gameObject.GetComponent<EnemySpawner>().CurrentWave;
             AddScores(score);
-            SceneManager.LoadScene(0);
+            StartCoroutine(EndScreen());
         }
         else {
             lifes -= amount;
         }
+    }
+
+    private IEnumerator EndScreen() {
+        gameOverText.gameObject.SetActive(true);
+        Debug.Log("should popup");
+        GameTime.isPaused = true;
+        yield return new WaitForSeconds(5);
+        GameTime.isPaused = false;
+        SceneManager.LoadScene(0);
     }
 
     public void AddScores(int toAdd) {
@@ -65,9 +78,6 @@ public class LevelManager : MonoBehaviour {
         scores[10] = toAdd;
         Array.Sort(scores);
         Array.Reverse(scores);
-        foreach (var k in scores) {
-            Debug.Log(k);
-        }
         
         for (int j = 0; j < 10; j++) {
             PlayerPrefs.SetInt(j.ToString(),scores[j]);

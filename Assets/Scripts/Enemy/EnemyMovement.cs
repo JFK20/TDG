@@ -24,12 +24,13 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     private void Update() {
+        if (GameTime.isPaused) { return; }
         if (Vector2.Distance(target.position,this.transform.position) <= 0.1f) {
             pathIndex++;
 
             if (pathIndex == LevelManager.Main.path.Length) {
                 EnemySpawner.onEnemyKilled.Invoke();
-                LevelManager.Main.DecreaseLife((this.gameObject.GetComponent<EnemyHealth>().HitPoints)/2);
+                LevelManager.Main.DecreaseLife((this.gameObject.GetComponent<EnemyHealth>().HitPoints) * 5); // /2
                 Destroy(this.gameObject);
                 return;
             }
@@ -40,6 +41,7 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (GameTime.isPaused) { return; }
         Vector2 direction = (target.position - this.transform.position).normalized;
 
         rb.velocity = direction * moveSpeed;
