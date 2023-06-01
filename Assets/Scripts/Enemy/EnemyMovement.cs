@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour {
     private int pathIndex = 0;
     private float baseSpeed;
 
-    public bool isSlowed = false;
+    //public bool isSlowed = false;
 
     private void Start() {
         target = LevelManager.Main.path[pathIndex];
@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour {
 
             if (pathIndex == LevelManager.Main.path.Length) {
                 EnemySpawner.onEnemyKilled.Invoke();
+                LevelManager.Main.DecreaseLife((this.gameObject.GetComponent<EnemyHealth>().HitPoints)/2);
                 Destroy(this.gameObject);
                 return;
             }
@@ -56,6 +57,8 @@ public class EnemyMovement : MonoBehaviour {
 
     public void ResetSpeed() {
         moveSpeed = baseSpeed;
-        this.gameObject.GetComponent<SpriteRenderer>().color -= Color.blue;
+        if (this != null) {
+            this.gameObject.GetComponent<SpriteRenderer>().color -= Color.blue;
+        }
     }
 }

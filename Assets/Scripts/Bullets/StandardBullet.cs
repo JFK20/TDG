@@ -11,7 +11,12 @@ public abstract class StandardBullet : MonoBehaviour {
     [Header("Attributes")] 
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private int damage = 1;
-    
+
+    public int Damage {
+        get => damage;
+        set => damage = value;
+    }
+
     private Transform target;
 
     public void SetTarget(Transform _target) {
@@ -28,5 +33,9 @@ public abstract class StandardBullet : MonoBehaviour {
     protected virtual void OnCollisionEnter2D(Collision2D other) {
         other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
         Destroy(gameObject);
+    }
+
+    private void OnBecameInvisible() {
+        Destroy(this.gameObject);
     }
 }
