@@ -6,7 +6,7 @@ using UnityEditor;
 
 
 public class BasicTurret : StandardTurret {
-    
+
     protected override void Shoot() {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
@@ -17,6 +17,9 @@ public class BasicTurret : StandardTurret {
     protected override void Start() {
         baseBps = bps;
         baseTargetingRange = targetingRange;
+
+        maxLevelBps = 5;
+        maxLevelRange = 3;
         
         upgradeButton1.onClick.AddListener(UpgradeBps);
         upgradeButton2.onClick.AddListener(UpgradeRange);
@@ -26,10 +29,11 @@ public class BasicTurret : StandardTurret {
         if (CalculateCost(levelBps) > LevelManager.Main.currency) { return; }
 
         LevelManager.Main.SpendCurrency(CalculateCost(levelBps));
+        upgradeButton1Points[levelBps - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
         levelBps++;
         bps = CalculateBps(levelBps);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelBps >= 5) {
+        if (levelBps >= maxLevelBps) {
             upgradeButton1.interactable = false;
         }
     }
@@ -38,10 +42,11 @@ public class BasicTurret : StandardTurret {
         if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
 
         LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
+        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
         levelRange++;
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelRange >= 3) {
+        if (levelRange >= maxLevelRange) {
             upgradeButton2.interactable = false;
         }
     }

@@ -445,6 +445,8 @@ MonoBehaviour:
   rotationSpeed: 150
   bps: 1
   cost: 100
+  upgradeButton1Points: []
+  upgradeButton2Points: []
   aps: 0.5
   slowingAmount: 1
   slowingTime: 1

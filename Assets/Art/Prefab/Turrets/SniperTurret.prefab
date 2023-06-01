@@ -459,6 +459,8 @@ MonoBehaviour:
   rotationSpeed: 150
   bps: 0.5
   cost: 100
+  upgradeButton1Points: []
+  upgradeButton2Points: []
 --- !u!1 &4154786701206323658
 GameObject:
   m_ObjectHideFlags: 0
