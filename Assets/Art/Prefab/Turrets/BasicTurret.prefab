@@ -391,6 +391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5052283396537786329, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6547202403251949189, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_Name
       value: UpgradeUI
