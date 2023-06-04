@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void Update() {
+        if (GameTime.isPaused) { return; }
         if (!isSpawning) { return; }
         
         timeSinceLastSpawn += Time.deltaTime;
