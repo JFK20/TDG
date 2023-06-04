@@ -2,12 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTurret : StandardTurret
-{
+public class IceTurret : StandardTurret {
+    private int maxLevelAps;
+    private float baseAps;
+    private int levelAps = 1;
+
     [Header("Attributes")] 
     [SerializeField] protected float aps= 1f; //attacks per second
     [SerializeField] protected float slowingAmount = 2f;
     [SerializeField] protected float slowingTime = 2f;
+
+    protected override void Start() {
+        baseAps = aps;
+        baseTargetingRange = targetingRange;
+
+        maxLevelAps = 5;
+        maxLevelRange = 3;
+        
+        upgradeButton1.onClick.AddListener(UpgradeAps);
+        upgradeButton2.onClick.AddListener(UpgradeRange);
+    }
     
     protected override void Update() {
         timeUntilFire += Time.deltaTime;
@@ -38,6 +52,32 @@ public class IceTurret : StandardTurret
         yield return new WaitForSeconds(slowingTime);
         
         em.ResetSpeed();
+    }
+    
+    protected void UpgradeAps(){
+        if (CalculateCost(levelAps) > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(CalculateCost(levelAps));
+        upgradeButton1Points[levelAps - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        levelAps++;
+        aps = CalculateBps(levelAps);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
+        if (levelAps >= maxLevelAps) {
+            upgradeButton1.interactable = false;
+        }
+    }
+    
+    protected override void UpgradeRange(){
+        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
+        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        levelRange++;
+        targetingRange = CalculateTargetingRange(levelRange);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
+        if (levelRange >= maxLevelRange) {
+            upgradeButton2.interactable = false;
+        }
     }
     
 }

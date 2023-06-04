@@ -16,6 +16,9 @@ public class SniperTurret : StandardTurret
         baseBps = bps;
         baseTargetingRange = targetingRange;
         
+        maxLevelDmg = 5;
+        maxLevelRange = 3;
+        
         upgradeButton1.onClick.AddListener(UpgradeDmg);
         upgradeButton2.onClick.AddListener(UpgradeRange);
     }
@@ -24,9 +27,10 @@ public class SniperTurret : StandardTurret
         if (CalculateCost(levelDmg) > LevelManager.Main.currency) { return; }
 
         LevelManager.Main.SpendCurrency(CalculateCost(levelDmg));
+        upgradeButton1Points[levelDmg - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
         levelDmg++;
         SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelDmg >= 5) {
+        if (levelDmg >= maxLevelDmg) {
             upgradeButton1.interactable = false;
         }
     }
@@ -35,10 +39,11 @@ public class SniperTurret : StandardTurret
         if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
 
         LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
+        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
         levelRange++;
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelRange >= 4) {
+        if (levelRange >= maxLevelRange) {
             upgradeButton2.interactable = false;
         }
     }

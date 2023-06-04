@@ -51,10 +51,6 @@ public class EnemyMovement : MonoBehaviour {
         if (moveSpeed - newSpeed >= 0) {
             moveSpeed -= newSpeed;
         }
-        else {
-            Debug.Log("Going back");
-        }
-        
     }
 
     public void ResetSpeed() {

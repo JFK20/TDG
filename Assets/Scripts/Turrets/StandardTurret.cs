@@ -22,16 +22,23 @@ public abstract class StandardTurret : MonoBehaviour {
     [SerializeField] protected float rotationSpeed = 150f;
     [SerializeField] protected float bps = 1f; //bullets per second
     [SerializeField] protected int cost = 100;
+
+    [SerializeField] protected GameObject[] upgradeButton1Points;
+    [SerializeField] protected GameObject[] upgradeButton2Points;
     
     protected float baseTargetingRange = 5f;
     protected float baseBps = 1f;
 
     protected Transform target;
     protected float timeUntilFire;
-
+    
     protected int levelBps = 1;
     protected int levelRange = 1;
     protected int levelDmg = 1;
+    
+    protected int maxLevelBps;
+    protected int maxLevelRange;
+    protected int maxLevelDmg;
 
     protected virtual void Start() {
         /*if (this.GetType() == typeof(IceTurret)) { return;}
