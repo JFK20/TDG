@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour {
 
     private IEnumerator EndScreen() {
         gameOverText.gameObject.SetActive(true);
-        Debug.Log("should popup");
+        //Debug.Log("should popup");
         GameTime.isPaused = true;
         yield return new WaitForSeconds(5);
         GameTime.isPaused = false;
