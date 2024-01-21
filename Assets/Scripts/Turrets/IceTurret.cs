@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class IceTurret : StandardTurret {
@@ -53,8 +54,8 @@ public class IceTurret : StandardTurret {
         
         em.ResetSpeed();
     }
-    
-    protected void UpgradeAps(){
+
+    private void UpgradeAps(){
         int upgradeCost = CalculateCost(levelAps);
         if (upgradeCost > LevelManager.Main.currency) { return; }
 
@@ -69,17 +70,7 @@ public class IceTurret : StandardTurret {
     }
     
     protected override void UpgradeRange(){
-        int upgradeCost = CalculateCost(levelRange);
-        if (upgradeCost > LevelManager.Main.currency) { return; }
-
-        LevelManager.Main.SpendCurrency(upgradeCost);
-        levelRange++;
-        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1,CalculateCost(levelRange));
-        targetingRange = CalculateTargetingRange(levelRange);
-        SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelRange >= maxLevelRange) {
-            upgradeButton2.interactable = false;
-        }
+        base.UpgradeRange();
     }
     
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEditor;
 
@@ -30,16 +31,6 @@ public class BasicTurret : StandardTurret {
     }
     
     protected override void UpgradeRange(){
-        int upgradeCost = CalculateCost(levelRange);
-        if (upgradeCost > LevelManager.Main.currency) { return; }
-
-        LevelManager.Main.SpendCurrency(upgradeCost);
-        levelRange++;
-        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
-        targetingRange = CalculateTargetingRange(levelRange);
-        SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelRange >= maxLevelRange) {
-            upgradeButton2.interactable = false;
-        }
+        base.UpgradeRange();
     }
 }

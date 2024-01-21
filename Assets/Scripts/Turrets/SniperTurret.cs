@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class SniperTurret : StandardTurret
@@ -24,30 +25,11 @@ public class SniperTurret : StandardTurret
     }
     
     protected override void UpgradeDmg(){
-        int upgradeCost = CalculateCost(levelDmg);
-        if (upgradeCost > LevelManager.Main.currency) { return; }
-
-        LevelManager.Main.SpendCurrency(upgradeCost);
-        levelDmg++;
-        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
-        SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelDmg >= maxLevelDmg) {
-            upgradeButton1.interactable = false;
-        }
+        base.UpgradeDmg();
     }
 
     protected override void UpgradeRange() {
-        int upgradeCost = CalculateCost(levelRange);
-        if (upgradeCost > LevelManager.Main.currency) { return; }
-
-        LevelManager.Main.SpendCurrency(upgradeCost);
-        levelRange++;
-        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange - 1,CalculateCost(levelRange));
-        targetingRange = CalculateTargetingRange(levelRange);
-        SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelRange >= maxLevelRange) {
-            upgradeButton2.interactable = false;
-        }
+        base.UpgradeRange();
     }
     
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
@@ -121,25 +122,41 @@ public abstract class StandardTurret : MonoBehaviour {
     }
 
     protected virtual void UpgradeRange() {
-        throw new InheritanceException();
+        int upgradeCost = CalculateCost(levelRange);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(upgradeCost);
+        levelRange++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
+        targetingRange = CalculateTargetingRange(levelRange);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
+        if (levelRange >= maxLevelRange) {
+            upgradeButton2.interactable = false;
+        }
     }
 
     protected virtual void UpgradeDmg() {
-        throw new InheritanceException();
+        int upgradeCost = CalculateCost(levelDmg);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
+
+        LevelManager.Main.SpendCurrency(upgradeCost);
+        levelDmg++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
+        if (levelDmg >= maxLevelDmg) {
+            upgradeButton1.interactable = false;
+        }
     }
     
     protected virtual int CalculateCost(int level) {
         return Mathf.RoundToInt(cost * Mathf.Pow(level, 0.8f));
-        //throw new InheritanceException();
     }
 
     protected virtual float CalculateBps(int level) {
         return baseBps * Mathf.Pow(level, 0.5f);
-        //throw new InheritanceException();
     }
     
     protected virtual float CalculateTargetingRange(int level) {
         return baseTargetingRange * Mathf.Pow(level, 0.3f);
-        //throw new InheritanceException();
     }
 }
