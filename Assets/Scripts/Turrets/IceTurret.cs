@@ -17,14 +17,12 @@ namespace Turrets
         [SerializeField] protected float slowingTime = 2f;
 
         protected override void Start() {
+            base.Start();
             baseAps = aps;
             baseTargetingRange = targetingRange;
 
             maxLevelAps = 5;
             maxLevelRange = 3;
-        
-            upgradeButton1.onClick.AddListener(UpgradeAps);
-            upgradeButton2.onClick.AddListener(UpgradeRange);
         }
     
         protected override void Update() {
@@ -58,21 +56,21 @@ namespace Turrets
             em.ResetSpeed();
         }
 
-        private void UpgradeAps(){
+        public void UpgradeAps(){
             int upgradeCost = CalculateCost(levelAps);
             if (upgradeCost > LevelManager.Main.currency) { return; }
 
             LevelManager.Main.SpendCurrency(upgradeCost);
             levelAps++;
-            upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelAps - 1,CalculateCost(levelAps));
+            upgradeUIHandler.UpgradedStatOne(levelAps - 1,CalculateCost(levelAps));
             aps = CalculateBps(levelAps);
             SoundEffectPlayer.Main.BuildandUpgradeSound();
             if (levelAps >= maxLevelAps) {
-                upgradeButton1.interactable = false;
+                upgradeUIHandler.DeactivateUpgradeButton(1);
             }
         }
     
-        protected override void UpgradeRange(){
+        public override void UpgradeRange(){
             base.UpgradeRange();
         }
     

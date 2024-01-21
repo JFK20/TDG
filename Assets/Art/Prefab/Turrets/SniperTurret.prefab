@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708761399252247986}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4131855288229260511}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8938787108311108284
 SpriteRenderer:
@@ -108,6 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4131855288229260504}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -117,7 +118,6 @@ Transform:
   - {fileID: 4304819561214445005}
   - {fileID: 96261301364867150}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5666329385657034809
 MonoBehaviour:
@@ -138,20 +138,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1046728661435722807, guid: 0ee5d277b32563b469a9f4f96074e9ac, type: 3}
   firingPoint: {fileID: 144556004289681866}
   upgradeUI: {fileID: 6179087212243980680}
-  upgradeButton1: {fileID: 1870984111424454361}
-  upgradeButton2: {fileID: 6399474865043787556}
   targetingRange: 10
   rotationSpeed: 150
   bps: 0.5
   cost: 100
-  upgradeButton1Points:
-  - {fileID: 648250368794527204}
-  - {fileID: 1192949476668634445}
-  - {fileID: 6299018542126723153}
-  - {fileID: 2777115887775625543}
-  upgradeButton2Points:
-  - {fileID: 4820103559318602265}
-  - {fileID: 4107512630666612653}
 --- !u!1 &5489635441995499932
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,13 +165,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489635441995499932}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4304819561214445005}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6458235283365956496
 GameObject:
@@ -206,6 +196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458235283365956496}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -214,7 +205,6 @@ Transform:
   - {fileID: 1482023200558902516}
   - {fileID: 144556004289681866}
   m_Father: {fileID: 4131855288229260511}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6908653325352634758
 GameObject:
@@ -240,13 +230,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6908653325352634758}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4304819561214445005}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3056034766824205926
 SpriteRenderer:
@@ -305,6 +295,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4131855288229260511}
     m_Modifications:
     - target: {fileID: 1029406584908078915, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
@@ -391,6 +382,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5666329385657034809}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeDmg
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.SniperTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3180344650112898872, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_text
       value: Upgrade Dmg
@@ -398,6 +417,34 @@ PrefabInstance:
     - target: {fileID: 5052283396537786329, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5666329385657034809}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.SniperTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6547202403251949189, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_Name
@@ -407,21 +454,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1
+      value: 
+      objectReference: {fileID: 1870984111424454361}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2
+      value: 
+      objectReference: {fileID: 6399474865043787556}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
 --- !u!224 &96261301364867150 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1029406584908078915, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &648250368794527204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 568542859332885225, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1192949476668634445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2275135620845070912, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
   m_PrefabInstance: {fileID: 1088977144586739469}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1870984111424454361 stripped
@@ -435,29 +483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2777115887775625543 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2996757282029121098, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4107512630666612653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3898993614584074400, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4820103559318602265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5618416831981460756, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6179087212243980680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6547202403251949189, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
-  m_PrefabInstance: {fileID: 1088977144586739469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6299018542126723153 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6374362642547699548, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
   m_PrefabInstance: {fileID: 1088977144586739469}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6399474865043787556 stripped

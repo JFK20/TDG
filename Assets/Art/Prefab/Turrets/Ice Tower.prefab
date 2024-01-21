@@ -105,8 +105,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   firingPoint: {fileID: 5201223173704965175}
   upgradeUI: {fileID: 5798187696476352612}
-  upgradeButton1: {fileID: 2035866498977750837}
-  upgradeButton2: {fileID: 6735216334974267080}
   targetingRange: 2
   rotationSpeed: 150
   bps: 1
@@ -218,6 +216,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3673492283332350333}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeAps
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.IceTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3180344650112898872, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_text
       value: Upgrade Aps
@@ -226,10 +252,46 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3673492283332350333}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.IceTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6547202403251949189, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_Name
       value: UpgradeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1
+      value: 
+      objectReference: {fileID: 2035866498977750837}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2
+      value: 
+      objectReference: {fileID: 6735216334974267080}
     - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: upgradeButton1Points.Array.size
       value: 4

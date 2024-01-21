@@ -915,7 +915,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1662115018541512643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89248c8f1eec2b147b2f0e4ad6b44ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouse_over: 0
+  mouseOver: 0
   upgradeCost1: {fileID: 8998894818052051374}
   upgradeCost2: {fileID: 6813152057507345515}
   upgradeButton1Points:

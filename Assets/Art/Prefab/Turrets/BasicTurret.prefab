@@ -138,8 +138,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1046728661435722807, guid: 46578ddd47848964f971414f0629217c, type: 3}
   firingPoint: {fileID: 144556004289681866}
   upgradeUI: {fileID: 6530940700809572094}
-  upgradeButton1: {fileID: 1627236257480933807}
-  upgradeButton2: {fileID: 6317856038803140690}
   targetingRange: 5
   rotationSpeed: 150
   bps: 1
@@ -384,14 +382,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5666329385657034809}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeBps
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.BasicTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651625703286120916, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5052283396537786329, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5666329385657034809}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Turrets.BasicTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328492656735637545, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6547202403251949189, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: m_Name
       value: UpgradeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1
+      value: 
+      objectReference: {fileID: 1627236257480933807}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2
+      value: 
+      objectReference: {fileID: 6317856038803140690}
     - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
       propertyPath: upgradeButton1Points.Array.size
       value: 4

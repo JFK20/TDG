@@ -13,21 +13,19 @@ namespace Turrets
         }
 
         protected override void Start() {
+            base.Start();
             baseBps = bps;
             baseTargetingRange = targetingRange;
 
             maxLevelBps = 5;
             maxLevelRange = 3;
-        
-            upgradeButton1.onClick.AddListener(UpgradeBps);
-            upgradeButton2.onClick.AddListener(UpgradeRange);
         }
     
-        protected override void UpgradeBps(){
+        public override void UpgradeBps(){
             base.UpgradeBps();
         }
     
-        protected override void UpgradeRange(){
+        public override void UpgradeRange(){
             base.UpgradeRange();
         }
     }

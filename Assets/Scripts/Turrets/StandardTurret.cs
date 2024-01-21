@@ -13,8 +13,7 @@ namespace Turrets
         [SerializeField] protected GameObject bulletPrefab;
         [SerializeField] protected Transform firingPoint;
         [SerializeField] protected GameObject upgradeUI;
-        [SerializeField] protected Button upgradeButton1;
-        [SerializeField] protected Button upgradeButton2;
+        protected UpgradeUIHandler upgradeUIHandler;
     
         [Header("Attributes")] 
         [SerializeField] protected float targetingRange = 5f;
@@ -40,7 +39,7 @@ namespace Turrets
             /*if (this.GetType() == typeof(IceTurret)) { return;}
         baseBps = bps;
         baseTargetingRange = targetingRange;*/
-            throw new InheritanceException();
+            upgradeUIHandler = upgradeUI.GetComponent<UpgradeUIHandler>();
         }
 
         protected virtual void Update() {
@@ -105,44 +104,44 @@ namespace Turrets
             UIManager.Main.SetHoveringState(false);
         }
 
-        protected virtual void UpgradeBps() {
+        public virtual void UpgradeBps() {
             int upgradeCost = CalculateCost(levelBps);
             if (upgradeCost > LevelManager.Main.currency) { return; }
 
             LevelManager.Main.SpendCurrency(upgradeCost);
             levelBps++;
-            upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelBps-1, CalculateCost(levelBps));
+            upgradeUIHandler.UpgradedStatOne(levelBps-1, CalculateCost(levelBps));
             bps = CalculateBps(levelBps);
             SoundEffectPlayer.Main.BuildandUpgradeSound();
             if (levelBps >= maxLevelBps) {
-                upgradeButton1.interactable = false;
+                upgradeUIHandler.DeactivateUpgradeButton(1);
             }
         }
 
-        protected virtual void UpgradeRange() {
+        public virtual void UpgradeRange() {
             int upgradeCost = CalculateCost(levelRange);
             if (upgradeCost > LevelManager.Main.currency) { return; }
 
             LevelManager.Main.SpendCurrency(upgradeCost);
             levelRange++;
-            upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
+            upgradeUIHandler.UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
             targetingRange = CalculateTargetingRange(levelRange);
             SoundEffectPlayer.Main.BuildandUpgradeSound();
             if (levelRange >= maxLevelRange) {
-                upgradeButton2.interactable = false;
+                upgradeUIHandler.DeactivateUpgradeButton(2);
             }
         }
 
-        protected virtual void UpgradeDmg() {
+        public virtual void UpgradeDmg() {
             int upgradeCost = CalculateCost(levelDmg);
             if (upgradeCost > LevelManager.Main.currency) { return; }
 
             LevelManager.Main.SpendCurrency(upgradeCost);
             levelDmg++;
-            upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
+            upgradeUIHandler.UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
             SoundEffectPlayer.Main.BuildandUpgradeSound();
             if (levelDmg >= maxLevelDmg) {
-                upgradeButton1.interactable = false;
+                upgradeUIHandler.DeactivateUpgradeButton(1);
             }
         }
     
