@@ -24,11 +24,12 @@ public class SniperTurret : StandardTurret
     }
     
     protected override void UpgradeDmg(){
-        if (CalculateCost(levelDmg) > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelDmg);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost(levelDmg));
-        upgradeButton1Points[levelDmg - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        LevelManager.Main.SpendCurrency(upgradeCost);
         levelDmg++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelDmg >= maxLevelDmg) {
             upgradeButton1.interactable = false;
@@ -36,11 +37,12 @@ public class SniperTurret : StandardTurret
     }
 
     protected override void UpgradeRange() {
-        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelRange);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
-        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        LevelManager.Main.SpendCurrency(upgradeCost);
         levelRange++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange - 1,CalculateCost(levelRange));
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= maxLevelRange) {

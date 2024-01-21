@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708761399252247986}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4131855288229260511}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8938787108311108284
 SpriteRenderer:
@@ -108,6 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4131855288229260504}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -117,7 +118,6 @@ Transform:
   - {fileID: 4304819561214445005}
   - {fileID: 1024557675707072312}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5666329385657034809
 MonoBehaviour:
@@ -144,14 +144,6 @@ MonoBehaviour:
   rotationSpeed: 150
   bps: 1
   cost: 100
-  upgradeButton1Points:
-  - {fileID: 548599837475519122}
-  - {fileID: 2300281514694363707}
-  - {fileID: 6343481833620819751}
-  - {fileID: 3019739195261750833}
-  upgradeButton2Points:
-  - {fileID: 5586286828477693295}
-  - {fileID: 3918932233091772635}
 --- !u!1 &5489635441995499932
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,13 +167,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489635441995499932}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4304819561214445005}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6458235283365956496
 GameObject:
@@ -206,6 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458235283365956496}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -214,7 +207,6 @@ Transform:
   - {fileID: 1482023200558902516}
   - {fileID: 144556004289681866}
   m_Father: {fileID: 4131855288229260511}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6908653325352634758
 GameObject:
@@ -240,13 +232,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6908653325352634758}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4304819561214445005}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3056034766824205926
 SpriteRenderer:
@@ -305,6 +297,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4131855288229260511}
     m_Modifications:
     - target: {fileID: 1029406584908078915, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
@@ -399,7 +392,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1Points.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2Points.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1Points.Array.data[0]
+      value: 
+      objectReference: {fileID: 548599837475519122}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1Points.Array.data[1]
+      value: 
+      objectReference: {fileID: 2300281514694363707}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1Points.Array.data[2]
+      value: 
+      objectReference: {fileID: 6343481833620819751}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton1Points.Array.data[3]
+      value: 
+      objectReference: {fileID: 3019739195261750833}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2Points.Array.data[0]
+      value: 
+      objectReference: {fileID: 5586286828477693295}
+    - target: {fileID: 6682258399861102022, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
+      propertyPath: upgradeButton2Points.Array.data[1]
+      value: 
+      objectReference: {fileID: 3918932233091772635}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79857a74462da6f4ab51a1048e0aea47, type: 3}
 --- !u!1 &548599837475519122 stripped
 GameObject:

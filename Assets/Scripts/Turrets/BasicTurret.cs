@@ -26,24 +26,16 @@ public class BasicTurret : StandardTurret {
     }
     
     protected override void UpgradeBps(){
-        if (CalculateCost(levelBps) > LevelManager.Main.currency) { return; }
-
-        LevelManager.Main.SpendCurrency(CalculateCost(levelBps));
-        upgradeButton1Points[levelBps - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
-        levelBps++;
-        bps = CalculateBps(levelBps);
-        SoundEffectPlayer.Main.BuildandUpgradeSound();
-        if (levelBps >= maxLevelBps) {
-            upgradeButton1.interactable = false;
-        }
+        base.UpgradeBps();
     }
     
     protected override void UpgradeRange(){
-        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelRange);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
-        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        LevelManager.Main.SpendCurrency(upgradeCost);
         levelRange++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= maxLevelRange) {

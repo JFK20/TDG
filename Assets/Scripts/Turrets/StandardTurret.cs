@@ -22,9 +22,6 @@ public abstract class StandardTurret : MonoBehaviour {
     [SerializeField] protected float rotationSpeed = 150f;
     [SerializeField] protected float bps = 1f; //bullets per second
     [SerializeField] protected int cost = 100;
-
-    [SerializeField] protected GameObject[] upgradeButton1Points;
-    [SerializeField] protected GameObject[] upgradeButton2Points;
     
     protected float baseTargetingRange = 5f;
     protected float baseBps = 1f;
@@ -110,13 +107,17 @@ public abstract class StandardTurret : MonoBehaviour {
     }
 
     protected virtual void UpgradeBps() {
-        /*if (CalculateCost() > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelBps);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost());
-        level++;
-        bps = CalculateBps();
-        targetingRange = CalculateTargetingRange();*/
-        throw new InheritanceException();
+        LevelManager.Main.SpendCurrency(upgradeCost);
+        levelBps++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelBps-1, CalculateCost(levelBps));
+        bps = CalculateBps(levelBps);
+        SoundEffectPlayer.Main.BuildandUpgradeSound();
+        if (levelBps >= maxLevelBps) {
+            upgradeButton1.interactable = false;
+        }
     }
 
     protected virtual void UpgradeRange() {

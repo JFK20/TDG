@@ -55,11 +55,12 @@ public class IceTurret : StandardTurret {
     }
     
     protected void UpgradeAps(){
-        if (CalculateCost(levelAps) > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelAps);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost(levelAps));
-        upgradeButton1Points[levelAps - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        LevelManager.Main.SpendCurrency(upgradeCost);
         levelAps++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatOne(levelAps - 1,CalculateCost(levelAps));
         aps = CalculateBps(levelAps);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelAps >= maxLevelAps) {
@@ -68,11 +69,12 @@ public class IceTurret : StandardTurret {
     }
     
     protected override void UpgradeRange(){
-        if (CalculateCost(levelRange) > LevelManager.Main.currency) { return; }
+        int upgradeCost = CalculateCost(levelRange);
+        if (upgradeCost > LevelManager.Main.currency) { return; }
 
-        LevelManager.Main.SpendCurrency(CalculateCost(levelRange));
-        upgradeButton2Points[levelRange - 1].GetComponent<SpriteRenderer>().color = Color.yellow;
+        LevelManager.Main.SpendCurrency(upgradeCost);
         levelRange++;
+        upgradeUI.GetComponent<UpgradeUIHandler>().UpgradedStatTwo(levelRange-1,CalculateCost(levelRange));
         targetingRange = CalculateTargetingRange(levelRange);
         SoundEffectPlayer.Main.BuildandUpgradeSound();
         if (levelRange >= maxLevelRange) {
