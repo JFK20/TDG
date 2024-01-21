@@ -109,7 +109,7 @@ MonoBehaviour:
   rotationSpeed: 150
   bps: 1
   cost: 100
-  aps: 0.5
+  aps: 0.25
   slowingAmount: 1
   slowingTime: 1
 --- !u!1001 &768735755687821025

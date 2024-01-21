@@ -35,6 +35,8 @@ namespace Turrets
         protected int maxLevelRange;
         protected int maxLevelDmg;
 
+        public delegate void UpgradeUIHandlerMethod(int level, int cost);
+        
         protected virtual void Start() {
             /*if (this.GetType() == typeof(IceTurret)) { return;}
         baseBps = bps;
@@ -104,45 +106,31 @@ namespace Turrets
             UIManager.Main.SetHoveringState(false);
         }
 
-        public virtual void UpgradeBps() {
-            int upgradeCost = CalculateCost(levelBps);
+        public void UpgradeAttribute(ref int level, int maxLevel, UpgradeUIHandlerMethod upgradeUIHandlerMethod, int buttonNumber) {
+            int upgradeCost = CalculateCost(level);
             if (upgradeCost > LevelManager.Main.currency) { return; }
 
             LevelManager.Main.SpendCurrency(upgradeCost);
-            levelBps++;
-            upgradeUIHandler.UpgradedStatOne(levelBps-1, CalculateCost(levelBps));
-            bps = CalculateBps(levelBps);
+            level++;
+            upgradeUIHandlerMethod(level - 1, CalculateCost(level));
             SoundEffectPlayer.Main.BuildandUpgradeSound();
-            if (levelBps >= maxLevelBps) {
-                upgradeUIHandler.DeactivateUpgradeButton(1);
+            if (level >= maxLevel) {
+                upgradeUIHandler.DeactivateUpgradeButton(buttonNumber);
             }
+        }
+        
+        public virtual void UpgradeBps() {
+            UpgradeAttribute(ref levelBps, maxLevelBps, upgradeUIHandler.UpgradedStatOne, 1);
+            bps = CalculateBps(levelBps);
         }
 
         public virtual void UpgradeRange() {
-            int upgradeCost = CalculateCost(levelRange);
-            if (upgradeCost > LevelManager.Main.currency) { return; }
-
-            LevelManager.Main.SpendCurrency(upgradeCost);
-            levelRange++;
-            upgradeUIHandler.UpgradedStatTwo(levelRange-1, CalculateCost(levelRange));
+            UpgradeAttribute(ref levelRange, maxLevelRange, upgradeUIHandler.UpgradedStatTwo, 2);
             targetingRange = CalculateTargetingRange(levelRange);
-            SoundEffectPlayer.Main.BuildandUpgradeSound();
-            if (levelRange >= maxLevelRange) {
-                upgradeUIHandler.DeactivateUpgradeButton(2);
-            }
         }
 
         public virtual void UpgradeDmg() {
-            int upgradeCost = CalculateCost(levelDmg);
-            if (upgradeCost > LevelManager.Main.currency) { return; }
-
-            LevelManager.Main.SpendCurrency(upgradeCost);
-            levelDmg++;
-            upgradeUIHandler.UpgradedStatOne(levelDmg-1, CalculateCost(levelDmg));
-            SoundEffectPlayer.Main.BuildandUpgradeSound();
-            if (levelDmg >= maxLevelDmg) {
-                upgradeUIHandler.DeactivateUpgradeButton(1);
-            }
+            UpgradeAttribute(ref levelDmg, maxLevelDmg, upgradeUIHandler.UpgradedStatOne, 1);
         }
     
         protected virtual int CalculateCost(int level) {
@@ -158,5 +146,6 @@ namespace Turrets
             float result = baseTargetingRange * Mathf.Pow(level, 0.3f);
             return Mathf.Round(result * 100f) / 100f;
         }
+        
     }
 }

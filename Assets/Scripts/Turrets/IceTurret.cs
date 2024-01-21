@@ -56,23 +56,20 @@ namespace Turrets
             em.ResetSpeed();
         }
 
-        public void UpgradeAps(){
-            int upgradeCost = CalculateCost(levelAps);
-            if (upgradeCost > LevelManager.Main.currency) { return; }
-
-            LevelManager.Main.SpendCurrency(upgradeCost);
-            levelAps++;
-            upgradeUIHandler.UpgradedStatOne(levelAps - 1,CalculateCost(levelAps));
-            aps = CalculateBps(levelAps);
-            SoundEffectPlayer.Main.BuildandUpgradeSound();
-            if (levelAps >= maxLevelAps) {
-                upgradeUIHandler.DeactivateUpgradeButton(1);
-            }
+        public void UpgradeAps()
+        {
+            UpgradeAttribute(ref levelAps, maxLevelAps, upgradeUIHandler.UpgradedStatOne, 1);
+            aps = CalculateAps(levelAps);
         }
     
         public override void UpgradeRange(){
             base.UpgradeRange();
         }
-    
+
+        private float CalculateAps(int level)
+        {
+            return baseAps+ (level-1) * 0.1875f;
+        }
+        
     }
 }
