@@ -1,35 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UI;
 using UnityEngine;
 
-public class SniperTurret : StandardTurret
+namespace Turrets
 {
-    protected override void Shoot() {
-        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-        StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
-        standardBulletScript.Damage = levelDmg;
-        standardBulletScript.SetTarget(target);
-    }
+    public class SniperTurret : StandardTurret
+    {
+        protected override void Shoot() {
+            GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+            StandardBullet standardBulletScript = bulletObj.GetComponent<StandardBullet>();
+            standardBulletScript.Damage = levelDmg;
+            standardBulletScript.SetTarget(target);
+        }
     
-    protected override void Start() {
-        baseBps = bps;
-        baseTargetingRange = targetingRange;
+        protected override void Start() {
+            baseBps = bps;
+            baseTargetingRange = targetingRange;
         
-        maxLevelDmg = 5;
-        maxLevelRange = 3;
+            maxLevelDmg = 5;
+            maxLevelRange = 3;
         
-        upgradeButton1.onClick.AddListener(UpgradeDmg);
-        upgradeButton2.onClick.AddListener(UpgradeRange);
-    }
+            upgradeButton1.onClick.AddListener(UpgradeDmg);
+            upgradeButton2.onClick.AddListener(UpgradeRange);
+        }
     
-    protected override void UpgradeDmg(){
-        base.UpgradeDmg();
-    }
+        protected override void UpgradeDmg(){
+            base.UpgradeDmg();
+        }
 
-    protected override void UpgradeRange() {
-        base.UpgradeRange();
-    }
+        protected override void UpgradeRange() {
+            base.UpgradeRange();
+        }
     
+    }
 }
