@@ -150,11 +150,13 @@ namespace Turrets
         }
 
         protected virtual float CalculateBps(int level) {
-            return baseBps * Mathf.Pow(level, 0.5f);
+            float result = baseBps * Mathf.Pow(level, 0.5f);
+            return Mathf.Round(result * 100f) / 100f;
         }
     
         protected virtual float CalculateTargetingRange(int level) {
-            return baseTargetingRange * Mathf.Pow(level, 0.3f);
+            float result = baseTargetingRange * Mathf.Pow(level, 0.3f);
+            return Mathf.Round(result * 100f) / 100f;
         }
     }
 }
