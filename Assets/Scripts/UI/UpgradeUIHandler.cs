@@ -1,4 +1,5 @@
 using TMPro;
+using Turrets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -19,12 +20,14 @@ namespace UI
         public void OnPointerEnter(PointerEventData eventData) {
             mouseOver = true;
             UIManager.Main.SetHoveringState(true);
+            CircleManager.Instance.DrawCircle(50, gameObject.GetComponentInParent<StandardTurret>().GetRange(), transform.position);
         }
     
         public void OnPointerExit(PointerEventData eventData) {
             mouseOver = false;
             UIManager.Main.SetHoveringState(false);
             gameObject.SetActive(false);
+            CircleManager.Instance.DestroyCircle();
         }
     
         public void UpgradedStatOne(int level, int cost) {

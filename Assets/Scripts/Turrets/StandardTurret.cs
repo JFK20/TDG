@@ -1,5 +1,6 @@
 using Sounds;
 using UI;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -64,6 +65,11 @@ namespace Turrets
                 }
             }
         }
+        
+        public float GetRange()
+        {
+            return targetingRange;
+        }
 
         protected virtual void Shoot() {
             /*GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
@@ -93,9 +99,10 @@ namespace Turrets
         }
 
         /*protected void OnDrawGizmosSelected() {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-    }*/
+            Debug.Log("Draw Gizmos");
+            Handles.color = Color.cyan;
+            Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        }*/
 
         public void OpenUpgradeUI() {
             upgradeUI.SetActive(true);
@@ -127,6 +134,8 @@ namespace Turrets
         public virtual void UpgradeRange() {
             UpgradeAttribute(ref levelRange, maxLevelRange, upgradeUIHandler.UpgradedStatTwo, 2);
             targetingRange = CalculateTargetingRange(levelRange);
+            CircleManager.Instance.DestroyCircle();
+            CircleManager.Instance.DrawCircle(50, targetingRange, transform.position);
         }
 
         public virtual void UpgradeDmg() {
